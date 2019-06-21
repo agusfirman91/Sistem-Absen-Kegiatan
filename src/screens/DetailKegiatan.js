@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, FlatList, ScrollView, Button } from 'react-native';
+import { StyleSheet, Text, View, FlatList, ScrollView } from 'react-native';
 import { ListItem, Header } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/Ionicons';
 import axios from 'axios';
 
-export default class Kegiatan extends Component {
+export default class DetailKegiatan extends Component {
   constructor(props) {
     prefix_api = 'http://mobile.aguswahyu.com/uas/';
     super(props)
@@ -23,7 +23,9 @@ export default class Kegiatan extends Component {
   }
 
   _loadlist = () => {
-    axios.get(prefix_api + 'read_listkegiatan.php')
+    const id_kegiatan = this.props.navigation.state.params.id_kegiatan;
+
+    axios.get(prefix_api + 'read_listdetailkegiatan_byidkegiatan.php?id=' + id_kegiatan)
       .then(res => {
         const list = res.data;
         console.log(list);
@@ -34,11 +36,11 @@ export default class Kegiatan extends Component {
   keyExtractor = (item, index) => index.toString()
   renderItem = ({ item }) => (
     <ListItem
-      title={item.nama}
-      subtitle={item.id}
+      title={item.keterangan}
+      subtitle={item.id + ' - ' + item.tanggal}
       onPress={
         () => {
-          this.props.navigation.navigate('DetailKegiatan', { id_kegiatan: item.id, nama_kegiatan: item.nama })
+          this.props.navigation.navigate('Qrcode')
         }
       }
       containerStyle={{
@@ -49,13 +51,13 @@ export default class Kegiatan extends Component {
       }}
     />
   )
-  render() {
-    // const username = this.props.navigation.state.params.username;
 
+  render() {
+    const title = 'Detail ' + this.props.navigation.state.params.nama_kegiatan;
     return (
       <View style={styles.container} >
         <Header
-          centerComponent={{ text: "List Kegiatan", style: { color: '#fff', fontSize: 24 } }}
+          centerComponent={{ text: title, style: { color: '#fff', fontSize: 24 } }}
           containerStyle={{
             backgroundColor: '#454C59',
             shadowOpacity: 0,
@@ -71,7 +73,7 @@ export default class Kegiatan extends Component {
           </View>
         </ScrollView>
       </View>
-    );
+    )
   }
 }
 

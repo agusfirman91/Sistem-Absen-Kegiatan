@@ -5,11 +5,9 @@ import {
   PieChart
 } from 'react-native-chart-kit'
 
-
 export default class Home extends Component {
   constructor(props) {
     super(props)
-
     this.state = {
     }
   }
@@ -23,9 +21,7 @@ export default class Home extends Component {
     return (
       <View style={{ flex: 1 }}>
         <Header
-          // leftComponent={{ icon: 'menu', color: '#fff' }}
           centerComponent={{ text: "Dashboard", style: { color: '#fff', fontSize: 24 } }}
-          // rightComponent={{ icon: 'home', color: '#fff' }}
           containerStyle={{
             backgroundColor: '#454C59',
             shadowOpacity: 0,
@@ -52,12 +48,12 @@ export default class Home extends Component {
           <Card
             title='BANYAK KEGIATAN'
           >
-            <Text style={{ color: '#000', fontSize: 34, textAlign: 'center', marginBottom: 10 }}>100</Text>
+            <Text style={{ color: '#000', fontSize: 34, textAlign: 'center', marginBottom: 10 }}>20</Text>
             <Button
               buttonStyle={{ borderRadius: 5, backgroundColor: '#FA8A47' }}
               title='Detail' 
               onPress={() => {
-                this.props.navigation.navigate('Kegiatan', { username: item.id, nama_kegiatan: item.nama })
+                this.props.navigation.navigate('Kegiatan')
               }}
               />
           </Card>
