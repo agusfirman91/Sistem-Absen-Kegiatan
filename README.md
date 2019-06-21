@@ -8,4 +8,5 @@ Berikut merupakan Sistem Absen Kegiatan yang dibangun dengan react native sekali
 4. React Native Camera (https://github.com/lwansbrough/react-native-camera) 
 5. React Native Qrcode Scanner (https://github.com/moaazsidat/react-native-qrcode-scanner) 
 6. React Native Elements (https://react-native-training.github.io/react-native-elements/docs/getting_started.html)
+7. React Native Vector Icon (https://github.com/oblador/react-native-vector-icons)
  
